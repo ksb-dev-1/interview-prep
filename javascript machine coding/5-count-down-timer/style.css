@@ -1,0 +1,179 @@
+:root {
+  --br: 25px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Hides the up and down arrows in WebKit browsers */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hides the up and down arrows in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.countdown-timer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown-timer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: var(--br);
+  padding: 2rem;
+  border: 1px solid #c3c3c3;
+}
+
+.countdown-timer__title {
+  font-weight: 700;
+  color: #555;
+}
+
+.countdown-timer__inputs {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-timer__labels,
+.countdown-timer__fields {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.countdown-timer__label {
+  width: 75px;
+  margin-bottom: 1rem;
+}
+
+.countdown-timer__separator--transparent {
+  color: transparent;
+}
+
+.countdown-timer__separator {
+  font-size: 1.5rem;
+  margin: 0 1rem;
+}
+
+.countdown-timer__input {
+  height: 75px;
+  width: 75px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+  border: none;
+  text-align: center;
+  border-radius: 100%;
+  border: 1px solid #c3c3c3;
+}
+
+.countdown-timer__input:focus {
+  outline: transparent;
+}
+
+.countdown-timer__input:focus::placeholder {
+  color: transparent;
+}
+
+.countdown-timer__buttons {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.countdown-timer__button {
+  min-width: 50%;
+  padding: 0.75rem 0rem;
+  border-radius: var(--br);
+  border: none;
+  outline: none;
+  width: 100px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.start {
+  background: green;
+  margin-right: 0.25rem;
+}
+
+.start:hover {
+  background: rgb(0, 157, 0);
+}
+
+.stop {
+  display: none;
+  background: orange;
+  margin-right: 0.25rem;
+}
+
+.stop:hover {
+  background: rgb(255, 178, 34);
+}
+
+.reset {
+  background: tomato;
+  margin-left: 0.25rem;
+}
+
+.reset:hover {
+  background: rgb(255, 124, 101);
+}
+
+.transparent {
+  color: transparent;
+}
+
+.error-container {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100vh);
+  transition: transform 0.3s ease;
+}
+
+.error-msg {
+  background: rgb(255, 215, 208);
+  border: 1px solid tomato;
+  padding: 0.5rem 1rem;
+  border-radius: var(--br);
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.showError {
+  transform: translateY(80vh);
+}

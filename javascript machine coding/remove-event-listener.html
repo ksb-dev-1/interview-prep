@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Button Click Once</title>
+</head>
+<body>
+  <button id="btn">Click Me</button>
+  <p id="paragraph">Not clicked</p>
+
+  <script>
+    const button = document.getElementById("btn");
+    const paragraph = document.getElementById("paragraph");
+
+    function handleClickOnce() {
+      paragraph.textContent = "Button clicked once";
+      button.removeEventListener("click", handleClickOnce);
+    }
+
+    button.addEventListener("click", handleClickOnce);
+  </script>
+</body>
+</html>

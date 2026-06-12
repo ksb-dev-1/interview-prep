@@ -1,0 +1,19 @@
+--> delete in JavaScript is only used to remove object properties, not variables or the entire object itself.
+
+--> Truthy and Falsy
+
+if ("hello")   // ✅ truthy (non-empty string)
+if (42)        // ✅ truthy (non-zero number)
+if ([])        // ✅ truthy (empty array)
+if ({})        // ✅ truthy (empty object)
+if (true)      // ✅ truthy
+if (1)      // ✅ truthy
+if (-1)      // ✅ truthy
+
+if (false)     // ❌ falsy
+if (0)         // ❌ falsy
+if (-0)         // ❌ falsy
+if ("")        // ❌ falsy
+if (null)      // ❌ falsy
+if (undefined) // ❌ falsy
+if (NaN)       // ❌ falsy

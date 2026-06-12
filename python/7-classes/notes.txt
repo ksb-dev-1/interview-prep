@@ -1,0 +1,6 @@
+| Feature                  | Method Overriding                        | Duck Typing                     |
+| ------------------------ | ---------------------------------------- | ------------------------------- |
+| Requires inheritance?    | Yes                                      | No                              |
+| Classes related?         | Yes (parent-child)                       | Not necessarily                 |
+| Polymorphism achieved by | Overriding methods                       | Common method names (interface) |
+| Example in Python        | `Dog.speak()` overrides `Animal.speak()` | `Bird.fly()` & `Airplane.fly()` |

@@ -1,0 +1,53 @@
+----- EXERCISE-1 OUTPUT -----
+
+1
+2
+3
+4
+7
+5
+6
+9
+8
+
+--> EXPLAINATION
+
+All synchronous code runs first.
+
+Promise .then handlers (microtasks) run next.
+
+setTimeout callbacks (macrotasks) run last, with the one having a delay of 0 running before the one with a delay of 10ms.
+
+___________________________________________________________________________________________________________________________________
+
+
+----- EXERCISE-2 OUTPUT -----
+6
+
+--> EXPLAINATION
+
+Promise.resolve(1) creates a promise resolved with 1.
+
+.then(() => 2) returns 2, so the promise chain is now resolved with 2.
+
+.then(3) does nothing because 3 is not a function. The chain continues with 2.
+
+.then((value) => value * 3) receives 2 and returns 6. The chain is now resolved with 6.
+
+.then(Promise.resolve(4)) does nothing because Promise.resolve(4) is not a function. The chain continues with 6.
+
+.then(console.log) logs the final resolved value, which is 6.
+
+___________________________________________________________________________________________________________________________________
+
+
+----- EXERCISE-3 OUTPUT -----
+
+1
+2
+undefined
+3
+undefined
+4
+undefined
+undefined

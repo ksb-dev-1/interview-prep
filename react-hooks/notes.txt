@@ -1,0 +1,4 @@
+-> BATCHING 
+
+React's state update batching is an optimization that groups multiple state changes into a single re-render 
+to improve performance and prevent components from displaying intermediate, incomplete states

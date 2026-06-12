@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown Timer</title>
+  </head>
+  <body>
+    <h2>Countdown Timer</h2>
+
+    <label>
+      Hours:
+      <input type="number" id="hours" min="0" value="0" />
+    </label>
+    <label>
+      Minutes:
+      <input type="number" id="minutes" min="0" value="0" />
+    </label>
+    <label>
+      Seconds:
+      <input type="number" id="seconds" min="0" value="0" />
+    </label>
+
+    <br /><br />
+    <button id="startBtn">Start</button>
+    <button id="stopBtn" disabled>Stop</button>
+    <button id="resetBtn" disabled>Reset</button>
+
+    <p id="timerDisplay">00:00:00</p>
+
+    <script>
+      const hoursInput = document.getElementById("hours");
+      const minutesInput = document.getElementById("minutes");
+      const secondsInput = document.getElementById("seconds");
+
+      const startBtn = document.getElementById("startBtn");
+      const stopBtn = document.getElementById("stopBtn");
+      const resetBtn = document.getElementById("resetBtn");
+      const timerDisplay = document.getElementById("timerDisplay");
+
+      let intervalId = null;
+      let remainingMs = 0;
+      let isRunning = false;
+      let endTime = 0;
+
+      function formatTime(ms) {
+        const hrs = Math.floor(ms / 3600000);
+        ms %= 3600000;
+        const mins = Math.floor(ms / 60000);
+        ms %= 60000;
+        const secs = Math.floor(ms / 1000);
+        return `${String(hrs).padStart(2, "0")}:${String(mins).padStart(
+          2,
+          "0"
+        )}:${String(secs).padStart(2, "0")}`;
+      }
+
+      function updateDisplay() {
+        const now = Date.now();
+        const msLeft = Math.max(0, endTime - now);
+        remainingMs = msLeft;
+        timerDisplay.textContent = formatTime(msLeft);
+
+        if (msLeft <= 0) {
+          clearInterval(intervalId);
+          isRunning = false;
+          startBtn.disabled = false;
+          stopBtn.disabled = true;
+          resetBtn.disabled = false;
+          enableInputs();
+        }
+      }
+
+      function disableInputs() {
+        hoursInput.disabled = true;
+        minutesInput.disabled = true;
+        secondsInput.disabled = true;
+      }
+
+      function enableInputs() {
+        hoursInput.disabled = false;
+        minutesInput.disabled = false;
+        secondsInput.disabled = false;
+      }
+
+      startBtn.addEventListener("click", () => {
+        if (!isRunning) {
+          // First time or after pause
+          if (remainingMs === 0) {
+            const hrs = parseInt(hoursInput.value) || 0;
+            const mins = parseInt(minutesInput.value) || 0;
+            const secs = parseInt(secondsInput.value) || 0;
+            remainingMs = (hrs * 3600 + mins * 60 + secs) * 1000;
+          }
+
+          if (remainingMs <= 0) return;
+
+          endTime = Date.now() + remainingMs;
+          intervalId = setInterval(updateDisplay, 10);
+          updateDisplay();
+          isRunning = true;
+
+          disableInputs();
+          startBtn.disabled = true;
+          stopBtn.disabled = false;
+          resetBtn.disabled = false;
+        }
+      });
+
+      stopBtn.addEventListener("click", () => {
+        if (isRunning) {
+          clearInterval(intervalId);
+          remainingMs = Math.max(0, endTime - Date.now());
+          isRunning = false;
+
+          startBtn.disabled = false;
+          stopBtn.disabled = true;
+        }
+      });
+
+      resetBtn.addEventListener("click", () => {
+        clearInterval(intervalId);
+        remainingMs = 0;
+        isRunning = false;
+        timerDisplay.textContent = "00:00:00";
+
+        enableInputs();
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+        resetBtn.disabled = true;
+      });
+    </script>
+  </body>
+</html>

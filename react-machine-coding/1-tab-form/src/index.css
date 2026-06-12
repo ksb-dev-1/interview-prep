@@ -1,0 +1,178 @@
+:root {
+  --border-radius: 6px;
+  --border-color: #999;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1rem;
+  user-select: none;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+.tab-form {
+  max-width: 350px;
+  width: 100%;
+}
+
+/* Tabs */
+.tab-form__tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tab-form__tab {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  /* cursor: pointer; */
+  border: 1px solid var(--border-color);
+}
+
+/* .tab-form__tab:hover {
+  background-color: #ededed;
+  transition: background-color 0.3s ease;
+} */
+
+.tab-form__tab--active {
+  background-color: black;
+  border-color: black;
+  color: white;
+}
+
+.tab-form__tab--active:hover {
+  background-color: black;
+}
+
+/* Content Container */
+.tab-form__content {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  margin-top: 8px;
+  padding: 1rem;
+}
+
+/* Input Groups */
+.tab-form__input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.tab-form__input-group label {
+  font-size: small;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.tab-form__input-group input {
+  padding: 0.5rem;
+  margin-top: 4px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+
+/* Error */
+.tab-form__error {
+  font-size: small;
+  color: red;
+  margin-top: 4px;
+}
+
+/* Buttons */
+.tab-form__buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.tab-form__button {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  border: none;
+}
+
+.tab-form__button--prev,
+.tab-form__button--next {
+  border: 1px solid var(--border-color);
+  background-color: white;
+}
+
+.tab-form__button--prev:not(:disabled):hover,
+.tab-form__button--next:hover {
+  background-color: #e2e2e2;
+  cursor: pointer;
+}
+
+.tab-form__button--submit {
+  background-color: black;
+  border: 1px solid black;
+  cursor: pointer;
+  color: white;
+}
+
+.tab-form__button--submit:hover {
+  background-color: #333;
+}
+
+/* Interests */
+.tab-form__interests {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-form__title {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.tab-form__checkbox-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-form__checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.tab-form__checkbox-label {
+  display: flex;
+  align-items: center;
+}
+
+.tab-form__checkbox-text {
+  margin-left: 0.25rem;
+  margin-bottom: 0.1rem;
+}
+
+/* Settings */
+.tab-form__settings {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-form__radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-form__radio-group label {
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,76 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+body {
+  padding: 1rem;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.product-card {
+  /* width: 200px; */
+  padding: 1rem;
+  border: 1px solid #d3d3d3;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.product-card img {
+  width: 150px;
+  height: 150px;
+}
+
+@media (max-width: 1024px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pagination {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.btn {
+  border: 1px solid #d3d3d3;
+  background-color: white;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #d3d3d3;
+}
+
+.active {
+  background-color: black;
+  color: white;
+}
+
+.btn.active:hover {
+  background-color: black;
+  color: white;
+}

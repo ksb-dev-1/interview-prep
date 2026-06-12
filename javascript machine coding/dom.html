@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Complete DOM Practice</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      .box,
+      .task {
+        padding: 5px;
+        margin: 5px;
+        border: 1px solid #333;
+      }
+      .done {
+        background-color: #d3ffd3;
+      }
+      .highlight {
+        background: yellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 id="title">Complete DOM Practice</h1>
+
+    <!-- Traversal -->
+    <div id="container">
+      <div class="box" id="first">First</div>
+      <div class="box" id="middle">Middle</div>
+      <div class="box" id="last">Last</div>
+    </div>
+
+    <!-- List -->
+    <ul id="tasks">
+      <li class="task">Learn JS</li>
+      <li class="task done">Practice DOM</li>
+      <li class="task">Build Project</li>
+    </ul>
+
+    <!-- Button -->
+    <div class="card">
+      <button id="btn" class="primary">Click me</button>
+    </div>
+
+    <!-- Form -->
+    <form id="form">
+      <input type="text" id="input" placeholder="Enter task" />
+      <button type="submit">Add</button>
+    </form>
+
+    <script>
+      console.log("====== 1. SELECTING ======");
+      console.log(document.getElementById("title"));
+      console.log(document.querySelector(".box"));
+      console.log(document.querySelectorAll(".box"));
+
+      const container = document.getElementById("container");
+      const middle = document.getElementById("middle");
+
+      console.log("\n====== 2. TRAVERSAL ======");
+      console.log("Parent:", middle.parentElement);
+      console.log("Children:", container.children);
+      console.log("Prev:", middle.previousElementSibling);
+      console.log("Next:", middle.nextElementSibling);
+
+      console.log("\n====== 3. MANIPULATION ======");
+      middle.textContent = "Updated Middle";
+      middle.style.color = "red";
+
+      const newDiv = document.createElement("div");
+      newDiv.textContent = "New Box";
+      newDiv.classList.add("box");
+      container.appendChild(newDiv);
+
+      console.log("\n====== 4. ATTRIBUTES ======");
+      const btn = document.getElementById("btn");
+      btn.setAttribute("data-role", "action");
+      console.log(btn.getAttribute("data-role"));
+      btn.removeAttribute("data-role");
+
+      console.log("\n====== 5. EVENTS ======");
+      btn.addEventListener("click", () => {
+        alert("Button clicked!");
+      });
+
+      console.log("\n====== 6. EVENT DELEGATION ======");
+      const taskList = document.getElementById("tasks");
+
+      taskList.addEventListener("click", (e) => {
+        if (e.target.classList.contains("task")) {
+          e.target.classList.toggle("done");
+        }
+      });
+
+      console.log("\n====== 7. FORM HANDLING ======");
+      const form = document.getElementById("form");
+      const input = document.getElementById("input");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        if (input.value.trim() === "") return;
+
+        const li = document.createElement("li");
+        li.textContent = input.value;
+        li.classList.add("task");
+
+        taskList.appendChild(li);
+        input.value = "";
+      });
+
+      console.log("\n====== 8. INNERHTML vs TEXT ======");
+      const first = document.getElementById("first");
+      first.innerHTML = "<b>Bold First</b>"; // parses HTML
+      console.log(first.textContent); // plain text
+
+      console.log("\n====== 9. NODES vs ELEMENTS ======");
+      console.log(container.childNodes);
+      console.log(container.children);
+
+      console.log("\n====== 10. ADVANCED ======");
+      console.log(btn.closest(".card"));
+      console.log(btn.matches(".primary"));
+      console.log(document.body.contains(btn));
+
+      console.log("\n====== 11. FILTERING ======");
+      const tasks = document.querySelectorAll(".task");
+      tasks.forEach((task) => {
+        if (!task.classList.contains("done")) {
+          task.style.color = "green";
+        }
+      });
+
+      console.log("\n====== 12. CUSTOM HELPERS ======");
+      function getSiblings(el) {
+        return Array.from(el.parentNode.children).filter(
+          (child) => child !== el,
+        );
+      }
+
+      console.log(getSiblings(middle));
+    </script>
+  </body>
+</html>
