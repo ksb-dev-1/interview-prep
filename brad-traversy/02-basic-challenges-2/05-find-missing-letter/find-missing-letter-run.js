@@ -1,5 +1,5 @@
-const findMissingLetter = require('./find-missing-letter');
+import { findMissingLetter } from "./find-missing-letter.js";
 
-result = findMissingLetter(['a', 'b', 'c', 'f', 'g']);
+const result = findMissingLetter(["a", "b", "c", "f", "g"]);
 
 console.log(result);
