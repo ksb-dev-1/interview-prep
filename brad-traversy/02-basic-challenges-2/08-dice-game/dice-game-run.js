@@ -1,4 +1,4 @@
-const diceGameSimulation = require('./dice-game');
+import { diceGameSimulation } from "./dice-game.js";
 
 const result = diceGameSimulation(10);
 

@@ -1,7 +1,8 @@
-const diceGameSimulation = require('./dice-game');
+import { test, expect, describe } from "vitest";
+import { diceGameSimulation } from "./dice-game";
 
-describe('diceGameSimulation', () => {
-  test('should simulate the dice game correctly', () => {
+describe("diceGameSimulation", () => {
+  test("should simulate the dice game correctly", () => {
     const numSimulations = 100;
     const simulationResults = diceGameSimulation(numSimulations);
 
@@ -20,11 +21,11 @@ describe('diceGameSimulation', () => {
       expect(sum).toBeLessThanOrEqual(12);
 
       if (sum === 7 || sum === 11) {
-        expect(gameResult).toBe('win');
+        expect(gameResult).toBe("win");
       } else if (sum === 2 || sum === 3 || sum === 12) {
-        expect(gameResult).toBe('lose');
+        expect(gameResult).toBe("lose");
       } else {
-        expect(gameResult).toBe('roll again');
+        expect(gameResult).toBe("roll again");
       }
     });
   });
