@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Countdown Timer</title>
+  </head>
+  <body>
+    <div class="countdown-timer">
+      <div class="countdown-timer__inner">
+        <h1 class="countdown-timer__title">Countdown Timer</h1>
+
+        <div class="countdown-timer__inputs">
+          <div class="countdown-timer__labels">
+            <p class="countdown-timer__label">Hours</p>
+            <span
+              class="countdown-timer__separator countdown-timer__separator--transparent"
+              >:</span
+            >
+            <p class="countdown-timer__label">Minutes</p>
+            <span
+              class="countdown-timer__separator countdown-timer__separator--transparent"
+              >:</span
+            >
+            <p class="countdown-timer__label">Seconds</p>
+          </div>
+
+          <div class="countdown-timer__fields">
+            <input
+              type="number"
+              maxlength="2"
+              oninput="this.value=this.value.slice(0, this.maxLength)"
+              placeholder="00"
+              id="hours"
+              class="countdown-timer__input"
+            />
+            <span class="countdown-timer__separator">:</span>
+            <input
+              type="number"
+              maxlength="2"
+              oninput="this.value=this.value.slice(0, this.maxLength)"
+              placeholder="00"
+              id="minutes"
+              class="countdown-timer__input"
+            />
+            <span class="countdown-timer__separator">:</span>
+            <input
+              type="number"
+              maxlength="2"
+              oninput="this.value=this.value.slice(0, this.maxLength)"
+              placeholder="00"
+              id="seconds"
+              class="countdown-timer__input"
+            />
+          </div>
+        </div>
+
+        <div class="countdown-timer__buttons">
+          <button class="countdown-timer__button start">Start</button>
+          <button class="countdown-timer__button stop">Stop</button>
+          <!-- <button id="continue" class="countdown-timer__button">
+            Continue
+          </button> -->
+          <button class="countdown-timer__button reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="error">
+      <p class="error__message">error</p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

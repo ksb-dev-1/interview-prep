@@ -1,0 +1,23 @@
+// ----- EXERCISE-1 -----
+
+Inside the function func, the statement const a = b = c = 1; is executed.
+
+    const a = ... declares a as a constant within the scope of func.
+
+    b = c = 1 assigns 1 to c first, then c (which is now 1) is assigned to b.
+
+    Because b and c are not declared with let, const, or var, they are implicitly declared as global variables.
+
+When func is called, the variables are assigned the values as described.
+
+After func is called, console.log(typeof a, typeof b, typeof c); is executed.
+
+    a is not defined outside of the function func, so typeof a will return 'undefined'.
+
+    Both b and c are globally defined and assigned the value 1, so typeof b and typeof c will both return 'number'.
+
+Therefore, the output of the code will be:
+
+undefined number number
+
+___________________________________________________________________________________________________________________________________

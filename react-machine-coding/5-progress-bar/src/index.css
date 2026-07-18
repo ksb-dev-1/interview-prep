@@ -1,0 +1,28 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.progress-bar__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.progress-bar {
+  width: 80%;
+  background-color: #e0e0e0;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  transition: 0.5s ease;
+  padding: 0.25rem 0;
+  text-align: right;
+  padding-right: 0.5rem;
+  font-size: smaller;
+  font-weight: 500;
+}

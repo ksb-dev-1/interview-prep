@@ -1,0 +1,29 @@
+----- EXERCISE-1 OUTPUT -----
+
+--> EXPLAINATION
+
+With var:
+
+var has function or global scope.
+setTimeout callbacks reference the same i, which is 5 after the loop finishes.
+
+5
+5
+5
+5
+5
+
+Declaration with let:
+
+With let:
+
+let has block scope.
+Each setTimeout callback captures the i value of its respective iteration.
+
+0
+1
+2
+3
+4
+
+___________________________________________________________________________________________________________________________________

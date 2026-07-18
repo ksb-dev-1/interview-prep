@@ -1,0 +1,96 @@
+----- EXERCISE-1 OUTPUT -----
+
+--> EXPLAINATION
+
+- console.log(obj.a);
+
+Logs the value of a in obj, which is 1.
+
+--> obj.b();
+
+b is a regular function, so this refers to obj.
+Logs this.a, which is 1.
+
+--> obj.c();
+
+c is a method, so this refers to obj.
+Logs this.a, which is 1.
+
+--> const b = obj.b; b();
+
+b is assigned to the function obj.b. When called, this is the global object (or undefined in strict mode), not obj.
+Logs undefined since this.a is not defined on the global object.
+obj.b.apply({ a: 2 });
+
+apply sets this to { a: 2 } for b.
+Logs this.a, which is 2.
+
+--> obj.c();
+
+Same as before, this is obj.
+Logs this.a, which is 1.
+
+--> obj.d();
+
+d is an arrow function, so this is lexically bound (to the global object).
+Logs undefined because this.a is undefined in the global context.
+
+--> obj.d.apply({ a: 2 });
+
+apply does not change this for arrow functions; this is still from the lexical scope.
+Logs undefined as before.
+
+--> obj.e();
+
+e is an arrow function returned by an IIFE. The this inside e is from the IIFE's lexical scope.
+Logs undefined because this.a is undefined in that scope.
+
+--> obj.e.call({ a: 2 });
+
+call does not change this for arrow functions.
+Logs undefined as before.
+
+--> obj.f()();
+
+f returns an arrow function. The this inside that arrow function is from f, which is obj.
+Logs this.a, which is 1.
+
+--> obj.f()();
+
+Same as above, logs 1.
+obj.f().call({ a: 2 });
+
+The arrow function returned by f has this lexically bound to obj, regardless of the call method.
+Logs 1 because this.a is still 1 within the arrow function context of f.
+
+1
+1
+1
+undefined
+2
+1
+undefined
+undefined
+undefined
+undefined
+undefined
+undefined
+1
+1
+1
+
+___________________________________________________________________________________________________________________________________
+
+----- EXERCISE-2 OUTPUT -----
+
+bfe
+bfe
+undefined 
+bfe
+bfe 
+fn b()
+undefined
+undefined
+undefined
+()
+bfe

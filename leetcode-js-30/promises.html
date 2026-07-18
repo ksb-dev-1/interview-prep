@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promises</title>
+  </head>
+  <body>
+    <script>
+      // ----- 1 -----
+
+      // var addTwoPromises = async function (promise1, promise2) {
+      //   //return Promise.all([promise1, promise2]).then(([val1, val2]) => val1 + val2);
+
+      //   const val1 = await promise1;
+      //   const val2 = await promise2;
+      //   return val1 + val2;
+      // };
+
+      // addTwoPromises(Promise.resolve(2), Promise.resolve(2)).then(console.log);
+
+      // const promise1 = new Promise((resolve) =>
+      //   setTimeout(() => resolve(2), 20)
+      // );
+      // const promise2 = new Promise((resolve) =>
+      //   setTimeout(() => resolve(5), 60)
+      // );
+
+      // addTwoPromises(promise1, promise2).then((result) => {
+      //   console.log(result);
+      // });
+      // addTwoPromises(promise1, promise2).then(console.log);
+    </script>
+
+    <script>
+      // ----- 2 -----
+
+      // async function sleep(millis) {
+      //   return new Promise((resolve) => setTimeout(resolve, millis));
+      // }
+
+      // let t = Date.now();
+      // sleep(100).then(() => console.log(Date.now() - t));
+    </script>
+
+    <script>
+      // function cancellable(fn, args, t) {
+      //   const timeoutId = setTimeout(() => fn(...args), t);
+
+      //   return function cancelFn() {
+      //     clearTimeout(timeoutId);
+      //   };
+      // }
+
+      // const cancelTimeMs = 30;
+      // const cancelFn = cancellable((x) => console.log(x * 5), [2], 20);
+      // console.log(cancelFn);
+      // setTimeout(cancelFn, cancelTimeMs);
+    </script>
+
+    <script>
+      // ----- 3 -----
+
+      // const start = performance.now(); // ✅ Declare first
+
+      // function cancellable(fn, args, t) {
+      //   fn(...args);
+
+      //   const intervalId = setInterval(() => {
+      //     fn(...args);
+      //   }, t);
+
+      //   return function cancelFn() {
+      //     clearInterval(intervalId);
+      //   };
+      // }
+
+      // const cancelTimeMs = 100;
+      // // const cancelFn = cancellable((x) => x * 2, [4], 35);
+      // const cancelFn = cancellable(
+      //   (x) => {
+      //     const time = Math.floor(performance.now() - start);
+      //     const result = x * 2;
+      //     console.log({ time, result });
+      //     return result;
+      //   },
+      //   [4],
+      //   35
+      // );
+
+      // setTimeout(cancelFn, cancelTimeMs);
+    </script>
+
+    <script type="module">
+      // ----- 4 -----
+
+      // function timeLimit(fn, t) {
+      //   return async function (...args) {
+      //     return new Promise(async (resolve, reject) => {
+      //       const timeoutId = setTimeout(
+      //         () => reject("Time Limit Exceeded"),
+      //         t
+      //       );
+
+      //       try {
+      //         const result = await fn(...args);
+      //         resolve(result);
+      //       } catch (err) {
+      //         reject(err);
+      //       } finally {
+      //         clearTimeout(timeoutId);
+      //       }
+      //     });
+      //   };
+      // }
+
+      // async function fn(n) {
+      //   await new Promise((res) => setTimeout(res, 100));
+      //   return n * n;
+      // }
+
+      // // const t = 90;
+      // const t = 150;
+      // const limited = timeLimit(fn, t);
+      // const res = await limited(5);
+      // console.log(res);
+    </script>
+
+    <script>
+      // ----- 5 -----
+
+      // async function promiseAll(functions) {
+      //   return new Promise((resolve, reject) => {
+      //     const results = [];
+      //     let completed = 0;
+      //     let cancelled = false;
+
+      //     if (functions.length === 0) return resolve([]);
+
+      //     functions.forEach(async (fn, index) => {
+      //       try {
+      //         if (cancelled) return;
+      //         console.log(`Executing function[${index}]`);
+      //         const res = await fn();
+
+      //         if (cancelled) return; // prevent post-resolve logic
+      //         console.log(`Resolved function[${index}]:`, res);
+
+      //         results[index] = res;
+      //         completed++;
+
+      //         if (completed === functions.length) {
+      //           resolve(results);
+      //         }
+      //       } catch (err) {
+      //         if (!cancelled) {
+      //           cancelled = true;
+      //           reject(err);
+      //         }
+      //       }
+      //     });
+      //   });
+      // }
+
+      // const functions = [
+      //   () => new Promise((res) => setTimeout(() => res("A"), 300)),
+      //   () => new Promise((res) => setTimeout(() => res("B"), 200)),
+      //   () => new Promise((res) => setTimeout(() => res("C"), 100)),
+      // ];
+
+      // promiseAll(functions).then(console.log).catch(console.error);
+      // Output after ~300ms: ["A", "B", "C"]
+
+      // const functions = [
+      //   () => new Promise((res) => setTimeout(() => res(1), 100)),
+      //   () => new Promise((_, rej) => setTimeout(() => rej("Failed"), 200)),
+      //   () => new Promise((res) => setTimeout(() => res(3), 300)),
+      // ];
+
+      // promiseAll(functions).then(console.log).catch(console.error);
+      // Output after ~50ms: "Failed"
+    </script>
+  </body>
+</html>

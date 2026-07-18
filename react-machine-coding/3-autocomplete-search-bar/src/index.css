@@ -1,0 +1,64 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  padding: 1rem;
+}
+
+input,
+.results {
+  padding: 0.75rem 1rem;
+  border-radius: 25px;
+  border: 1px solid #d4d4d4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  max-width: 750px;
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+  border: 3px solid rgb(168, 194, 241);
+}
+
+.loading {
+  padding: 0.75rem 1rem;
+}
+
+.error {
+  padding: 0.75rem 1rem;
+  color: red;
+}
+
+.results {
+  padding: 0.75rem 0;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.result {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+.result:hover {
+  background-color: #ededed;
+}

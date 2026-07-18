@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM Traversal Basic</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      .box,
+      .task {
+        padding: 5px;
+        margin: 5px;
+        border: 1px solid #333;
+      }
+      .done {
+        background-color: #d3ffd3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">DOM Traversal</h1>
+
+    <div id="container">
+      <div class="box" id="first">First</div>
+      <div class="box" id="middle">Middle</div>
+      <div class="box" id="last">Last</div>
+    </div>
+
+    <ul id="tasks">
+      <li class="task">Learn JS</li>
+      <li class="task done">Practice DOM</li>
+      <li class="task">Build Project</li>
+    </ul>
+
+    <div class="card">
+      <button class="primary">Click me</button>
+    </div>
+
+    <script>
+      // 1. Selecting Elements
+      console.log("1️⃣ Selecting Elements:");
+      console.log(document.getElementById("title"));
+      console.log(document.querySelector(".box"));
+      console.log(document.querySelectorAll(".box"));
+
+      // 2. Traversing Parent, Children, Siblings
+      console.log("\n2️⃣ Traversing the DOM Tree:");
+
+      const middle = document.getElementById("middle");
+      console.log("Parent:", middle.parentElement);
+      console.log("Previous Sibling:", middle.previousElementSibling);
+      console.log("Next Sibling:", middle.nextElementSibling);
+      console.log("Children of container:", container.children);
+
+      // 3. Filtering Elements
+      console.log("\n3️⃣ Filtering Elements:");
+      const boxes = document.querySelectorAll(".box");
+      const filtered = Array.from(boxes).filter((el) => el.id !== "middle");
+      console.log("Without middle:", filtered);
+
+      // 4. Recursive Traversal
+      console.log("\n4️⃣ Recursive Traversal:");
+      function traverse(node) {
+        console.log(node.tagName);
+        for (let child of node.children) {
+          traverse(child);
+        }
+      }
+      traverse(document.body);
+
+      // 5. Advanced Methods
+      console.log("\n5️⃣ Advanced Methods:");
+      const button = document.querySelector("button");
+      console.log("Closest .card:", button.closest(".card"));
+      console.log("Matches .primary?", button.matches(".primary"));
+      console.log(
+        "Body contains #first?",
+        document.body.contains(document.getElementById("first"))
+      );
+
+      // 6. Child Nodes vs Elements
+      console.log("\n6️⃣ Nodes vs Elements:");
+      const container = document.getElementById("container");
+      console.log("All childNodes:", container.childNodes); // includes text nodes
+      for (let node of container.childNodes) {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          console.log("Element:", node.tagName);
+        }
+      }
+
+      // 7. Real-world Filtering Example
+      console.log("\n7️⃣ Real-World Filtering:");
+      const tasks = document.querySelectorAll("#tasks .task");
+      tasks.forEach((task) => {
+        if (!task.classList.contains("done")) {
+          task.style.color = "green";
+        }
+      });
+
+      // 8. Helper Traversal Utilities
+      console.log("\n8️⃣ Custom Traversal Helpers:");
+
+      function getSiblings(el) {
+        return Array.from(el.parentNode.children).filter(
+          (child) => child !== el
+        );
+      }
+
+      function getNextSiblings(el) {
+        let siblings = [];
+        while ((el = el.nextElementSibling)) {
+          siblings.push(el);
+        }
+        return siblings;
+      }
+
+      const middleBox = document.getElementById("middle");
+      console.log("Siblings of #middle:", getSiblings(middleBox));
+      console.log("Next siblings of #middle:", getNextSiblings(middleBox));
+    </script>
+  </body>
+</html>

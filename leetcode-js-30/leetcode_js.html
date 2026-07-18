@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leetcode JS</title>
+  </head>
+  <body>
+    <script>
+      // ----- 1 -----
+
+      // var createHelloWorld = function () {
+      //   return function (...args) {
+      //     return "Hello World";
+      //   };
+      // };
+
+      // const f = createHelloWorld();
+      // console.log(f());
+
+      // // const f = createHelloWorld();
+      // // console.log(f([{}, null, 42]));
+    </script>
+
+    <script>
+      // ----- 2 -----
+
+      // var createCounter = function (n) {
+      //   return function () {
+      //     return n++;
+      //   };
+      // };
+      // const counter = createCounter(10);
+      // console.log(counter());
+      // console.log(counter());
+      // console.log(counter());
+    </script>
+
+    <script>
+      // ----- 3 -----
+
+      // var expect = function (val) {
+      //   return {
+      //     toBe: function (expected) {
+      //       if (val === expected) return true;
+      //       throw new Error("Not Equal");
+      //     },
+      //     notToBe: function (expected) {
+      //       if (val !== expected) return true;
+      //       throw new Error("Equal");
+      //     },
+      //   };
+      // };
+
+      // console.log(expect(5).toBe(5));
+      // //console.log(expect(5).toBe(null));
+      // console.log(expect(5).notToBe(null));
+    </script>
+
+    <script>
+      // ----- 4 -----
+
+      // var createCounter = function (init) {
+      //   const original = init;
+
+      //   return {
+      //     increment: function () {
+      //       return ++init;
+      //     },
+      //     reset: function () {
+      //       init = original;
+      //       return init;
+      //     },
+      //     decrement: function () {
+      //       return --init;
+      //     },
+      //   };
+      // };
+
+      // const counter = createCounter(0);
+      // console.log(counter.increment());
+      // console.log(counter.increment());
+      // console.log(counter.decrement());
+      // console.log(counter.reset());
+      // console.log(counter.reset());
+    </script>
+
+    <script>
+      // ----- 5 -----
+
+      // var map = function (arr, fn) {
+      //   //let res = []
+      //   let res = new Array(arr.length);
+
+      //   for (let i = 0; i < arr.length; i++) {
+      //     res[i] = fn(arr[i], i);
+      //   }
+      //   return res;
+      // };
+      // const arr = [1, 2, 3]
+      // fn = function plusone(n) {
+      //   return n + 1;
+      // };
+
+      // // fn = function plusI(n, i) {
+      // //   return n + i;
+      // // };
+
+      // // const arr = [10, 20, 30];
+      // // fn = function constant() {
+      // //   return 42;
+      // // };
+
+      // console.log(map(arr, fn));
+    </script>
+
+    <script>
+      // ----- 6 -----
+
+      // var filter = function (arr, fn) {
+      //   let res = [];
+
+      //   for (let i = 0; i < arr.length; i++) {
+      //     if (fn(arr[i], i)) res.push(arr[i]);
+      //   }
+      //   return res;
+      // };
+
+      // const arr = [0, 10, 20, 30];
+      // fn = function greaterThan10(n) {
+      //   return n > 10;
+      // };
+
+      // // const arr = [1, 2, 3];
+      // // fn = function firstIndex(n, i) {
+      // //   return i === 0;
+      // // };
+
+      // // const arr = [-2, -1, 0, 1, 2];
+      // // fn = function plusOne(n) {
+      // //   return n + 1;
+      // // };
+
+      // console.log(filter(arr, fn));
+    </script>
+
+    <script>
+      // ----- 7 -----
+
+      // var reduce = function (nums, fn, init) {
+      //   let result = init;
+
+      //   for (let i = 0; i < nums.length; i++) {
+      //     result = fn(result, nums[i]);
+      //   }
+      //   return result;
+      // };
+
+      // nums = [1, 2, 3, 4];
+      // fn = function sum(accum, curr) {
+      //   return accum + curr;
+      // };
+      // init = 0;
+
+      // // nums = [1, 2, 3, 4];
+      // // fn = function sum(accum, curr) {
+      // //   return accum + curr * curr;
+      // // };
+      // // init = 100;
+
+      // // nums = [];
+      // // fn = function sum(accum, curr) {
+      // //   return 0;
+      // // };
+      // // init = 25;
+
+      // console.log(reduce(nums, fn, init));
+    </script>
+
+    <script>
+      // ----- 8 -----
+
+      // var compose = function (functions) {
+      //   return function (x) {
+      //     for (let i = functions.length - 1; i >= 0; i--) {
+      //       x = functions[i](x);
+      //     }
+      //     return x;
+      //   };
+      // };
+
+      // const fn = compose([(x) => x + 1, (x) => x * x, (x) => 2 * x]);
+      // console.log(fn(4));
+
+      // // const fn = compose([x => 10 * x, x => 10 * x, x => 10 * x]);
+      // // console.log(fn(1))
+
+      // // const fn = compose([]);
+      // // console.log(fn(42))
+    </script>
+
+    <script>
+      // ----- 9 -----
+
+      // var argumentsLength = function (...args) {
+      //   return args.length;
+      // };
+
+      // console.log(argumentsLength({}, null, "3"));
+    </script>
+
+    <script>
+      // ----- 10 -----
+
+      // var once = function (fn) {
+      //   let called = false;
+      //   let result;
+
+      //   return function (...args) {
+      //     if (!called) {
+      //       called = true;
+      //       result = fn(...args);
+      //       return result;
+      //     } else {
+      //       return undefined;
+      //     }
+      //   };
+      // };
+
+      // let fn = (a, b, c) => a + b + c;
+      // let onceFn = once(fn);
+
+      // console.log(onceFn(1, 2, 3));
+      // console.log(onceFn(2, 3, 6));
+    </script>
+
+    <script>
+      // ----- 11 -----
+
+      // var memoize = function (fn) {
+      //   const cache = new Map();
+
+      //   return function (...args) {
+      //     const key = JSON.stringify(args); // ensures (3,2) ≠ (2,3)
+
+      //     if (cache.has(key)) {
+      //       return cache.get(key);
+      //     }
+
+      //     const result = fn(...args);
+      //     cache.set(key, result);
+      //     return result;
+      //   };
+      // };
+
+      // // 1. Sum
+      // const sum = (a, b) => a + b;
+      // const memoSum = memoize(sum);
+
+      // console.log(memoSum(2, 3)); // calls fn → 5
+      // console.log(memoSum(2, 3)); // returns from cache → 5
+      // console.log(memoSum(3, 2)); // new args → 5 (different from (2,3))
+
+      // // 2. Factorial
+      // const factorial = (n) => (n <= 1 ? 1 : n * factorial(n - 1));
+      // const memoFact = memoize(factorial);
+
+      // console.log(memoFact(5)); // calls fn → 120
+      // console.log(memoFact(5)); // cached → 120
+
+      // // 3. Fibonacci
+      // const fib = (n) => (n <= 1 ? 1 : fib(n - 1) + fib(n - 2));
+      // const memoFib = memoize(fib);
+
+      // console.log(memoFib(10)); // calls fn recursively and caches
+      // console.log(memoFib(10)); // returns from cache → 89
+    </script>
+
+    <script>
+      // ----- 12 -----
+
+      // var addTwoPromises = async function (promise1, promise2) {
+      //   //return Promise.all([promise1, promise2]).then(([val1, val2]) => val1 + val2);
+
+      //   const val1 = await promise1;
+      //   const val2 = await promise2;
+      //   return val1 + val2;
+      // };
+
+      // addTwoPromises(Promise.resolve(2), Promise.resolve(2)).then(console.log);
+
+      // const promise1 = new Promise((resolve) =>
+      //   setTimeout(() => resolve(2), 20)
+      // );
+      // const promise2 = new Promise((resolve) =>
+      //   setTimeout(() => resolve(5), 60)
+      // );
+
+      // addTwoPromises(promise1, promise2).then((result) => {
+      //   console.log(result);
+      // });
+      // addTwoPromises(promise1, promise2).then(console.log);
+    </script>
+
+    <script>
+      // ----- 13 -----
+
+      // async function sleep(millis) {
+      //   return new Promise((resolve) => setTimeout(resolve, millis));
+      // }
+
+      // let t = Date.now();
+      // sleep(100).then(() => console.log(Date.now() - t));
+    </script>
+
+    <script>
+      // ----- 14 -----
+
+      var cancellable = function (fn, args, t) {
+        // Step 1: schedule fn to run after `t` ms
+        const timeoutId = setTimeout(() => {
+          fn(...args); // Call fn with the provided arguments
+        }, t);
+
+        // Step 2: return a function that can cancel the scheduled call
+        return function cancelFn() {
+          clearTimeout(timeoutId); // This cancels the above timer
+        };
+      };
+
+      const cancelTimeMs = 50;
+      const cancelFn = cancellable((x) => console.log(x * 5), [2], 20);
+      setTimeout(cancelFn, cancelTimeMs);
+      // // Output: 10 (at 20ms) ✅ because cancel came too late
+
+      // const cancelTimeMs = 50;
+      // const cancelFn = cancellable((x) => console.log(x ** 2), [2], 100);
+      // setTimeout(cancelFn, cancelTimeMs);
+      // // Output: nothing ❌ because fn was canceled at 50ms (before 100ms)
+
+      // const cancelTimeMs = 100;
+      // const cancelFn = cancellable((x, y) => console.log(x * y), [2, 4], 30);
+      // setTimeout(cancelFn, cancelTimeMs);
+      // Output: 8 (at 30ms) ✅ because cancel came too late (after execution)
+    </script>
+
+    <script>
+      // ----- 15 -----
+
+      // var cancellable = function (fn, args, t) {
+      //   fn(...args); // call immediately
+
+      //   const intervalId = setInterval(() => {
+      //     fn(...args);
+      //   }, t);
+
+      //   return function cancelFn() {
+      //     clearInterval(intervalId);
+      //   };
+      // };
+
+      // // Example 1
+      // const cancelTimeMs = 190;
+      // const cancelFn = cancellable(
+      //   (x) => console.log(`interval 1: ${x * 2}`),
+      //   [4],
+      //   35
+      // );
+      // setTimeout(cancelFn, cancelTimeMs);
+      // Output:
+      // interval 1: 8 (at ~0ms)
+      // interval 1: 8 (at ~35ms)
+      // interval 1: 8 (at ~70ms)
+      // interval 1: 8 (at ~105ms)
+      // interval 1: 8 (at ~140ms)
+      // interval 1: 8 (at ~175ms)
+
+      // Example 2
+      // const cancelTimeMs = 165;
+      // const cancelFn = cancellable(
+      //   (x, y) => console.log(`interval 2: ${x * y}`),
+      //   [2, 5],
+      //   30
+      // );
+      // setTimeout(cancelFn, cancelTimeMs);
+      // // Output:
+      // // interval 2: 10 (at ~0ms)
+      // // interval 2: 10 (at ~30ms)
+      // // interval 2: 10 (at ~60ms)
+      // // interval 2: 10 (at ~90ms)
+      // // interval 2: 10 (at ~120ms)
+      // // interval 2: 10 (at ~150ms)
+
+      // Example 3
+      // const cancelTimeMs = 180;
+      // const cancelFn = cancellable(
+      //   (x1, x2, x3) => console.log(`interval 3: ${x1 + x2 + x3}`),
+      //   [5, 1, 3],
+      //   50
+      // );
+      // setTimeout(cancelFn, cancelTimeMs);
+      // // Output:
+      // // interval 3: 9 (at ~0ms)
+      // // interval 3: 9 (at ~50ms)
+      // // interval 3: 9 (at ~100ms)
+      // // interval 3: 9 (at ~150ms)
+    </script>
+  </body>
+</html>
