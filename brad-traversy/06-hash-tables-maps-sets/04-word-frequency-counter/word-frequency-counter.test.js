@@ -1,4 +1,5 @@
-const wordFrequencyCounter = require('./word-frequency-counter');
+import { wordFrequencyCounter } from "./word-frequency-counter";
+import { describe, it, expect } from "vitest"
 
 describe('wordFrequencyCounter', () => {
   it('should count word frequencies correctly', () => {

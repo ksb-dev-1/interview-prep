@@ -17,24 +17,24 @@ const map2 = new Map([
 ]);
 
 // Getting values
-console.log(nameMap.get(1));
-console.log(map2.get(myFunction));
-console.log(map2.get(emptyObj));
+console.log(nameMap.get(1)); // John
+console.log(map2.get(myFunction)); // empty function
+console.log(map2.get(emptyObj)); // empty object
 
 // Setting values
-nameMap.set(4, 'Jack');
+nameMap.set(4, 'Jack'); 
 nameMap.set(5, 'Jill');
 
 // Checking values
-console.log(nameMap.has(1));
-console.log(nameMap.has(6));
+console.log(nameMap.has(1)); // true
+console.log(nameMap.has(6)); // false
 
 // Deleting values
 nameMap.delete(1);
-console.log(nameMap.has(1));
+console.log(nameMap.has(1)); // false
 
 // Get Size
-console.log(nameMap.size);
+console.log(nameMap.size); // 4
 
 // Iterating (for...of)
 for (let [key, value] of nameMap) {
@@ -52,6 +52,6 @@ console.log(nameMap.values());
 
 // Clearing
 nameMap.clear();
-console.log(nameMap.size);
+console.log(nameMap.size); // 0
 
 // console.log(nameMap);
