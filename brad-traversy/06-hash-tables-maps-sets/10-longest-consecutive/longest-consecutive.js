@@ -1,3 +1,1 @@
-function longestConsecutiveSequence() {}
-
-module.exports = longestConsecutiveSequence;
+export function longestConsecutiveSequence(arr) {}
