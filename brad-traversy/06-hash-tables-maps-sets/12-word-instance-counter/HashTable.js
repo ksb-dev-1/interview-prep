@@ -1,4 +1,4 @@
-class HashTable {
+export class HashTable {
   constructor(limit = 14) {
     this.storage = [];
     this.limit = limit;
@@ -96,5 +96,3 @@ class HashTable {
     this.storage = [];
   }
 }
-
-module.exports = HashTable;
